@@ -65,7 +65,7 @@ document.getElementById("registrationForm").addEventListener("submit", function(
     if (errors.length > 0) {
         alert("Errors found:\n- " + errors.join("\n- "));
     } else {
-        alert("Registration Successful!");
+        alert("--Registration Successful!--");
         this.submit();
     }
 });
