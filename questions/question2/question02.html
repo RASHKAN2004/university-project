@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Vehicle Rental</title>
+    <style>
+        :root {
+            --primary: #4a90e2;
+            --bg-gradient: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--bg-gradient);
+            background-attachment: fixed;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            color: #fff;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+            width: 100%;
+            max-width: 400px;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            font-weight: 300;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: none;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.2);
+            color: #fff;
+            box-sizing: border-box;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        input:focus, select:focus {
+            background: rgba(255, 255, 255, 0.3);
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+        }
+
+        option {
+            background: #2a2a2a;
+            color: #fff;
+        }
+
+        button {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 8px;
+            background: var(--primary);
+            color: white;
+            font-weight: bold;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: 0.3s;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background: #357abd;
+            transform: translateY(-2px);
+        }
+
+        #result {
+            text-align: center;
+            margin-top: 20px;
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Rent a Ride</h2>
+        <form id="booking">
+            <div>
+                <label for="name">Customer Name</label>
+                <input type="text" id="name" placeholder="John Doe">
+            </div>
+            <div>
+                <label for="nic">NIC Number</label>
+                <input type="text" id="nic" placeholder="123456789V">
+            </div>
+            <div>
+                <label for="vehicle">Vehicle Type</label>
+                <select id="vehicle">
+                    <option value="">-- select vehicle --</option>
+                    <option value="car">Car</option>
+                    <option value="van">Van</option>
+                    <option value="bus">Bus</option>
+                </select>
+            </div>
+            <div>
+                <label for="day">Number of Days</label>
+                <input type="number" id="day" placeholder="1">
+            </div>
+            <button type="submit" id="btn">Confirm Booking</button>
+        </form>
+        <p id="result"></p>
+    </div>
+
+    <script>
+        const vehicles = [
+            { type: "car", available: 3 },
+            { type: "van", available: 2 },
+            { type: "bus", available: 1 }
+        ];
+
+        document.getElementById('booking').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const name = document.getElementById('name').value.trim();
+            const nic = document.getElementById('nic').value.trim();
+            const type = document.getElementById('vehicle').value;
+            const days = parseInt(document.getElementById('day').value);
+            const resultMsg = document.getElementById('result');
+
+            if (!name || !nic || !type || isNaN(days) || days <= 0) {
+                resultMsg.innerText = "Please fill all required fields correctly";
+                resultMsg.style.color = "#ff6b6b";
+                return;
+            }
+
+            const selectedVehicle = vehicles.find(v => v.type === type);
+            if (selectedVehicle.available > 0) {
+                selectedVehicle.available -= 1;
+                resultMsg.innerText = `Booking confirmed for ${name} – ${type.toUpperCase()} for ${days} days`;
+                resultMsg.style.color = "#51cf66";
+            } else {
+                resultMsg.innerText = `Sorry, no ${type}s available at the moment.`;
+                resultMsg.style.color = "#fcc419"; 
+            }
+        });
+    </script>
+</body>
+</html>
