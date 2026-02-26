@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Registration - Government Training Institute</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; line-height: 1.6; }
+        .form-container { max-width: 500px; margin: auto; border: 1px solid #ccc; padding: 20px; border-radius: 8px; }
+        .field { margin-bottom: 15px; }
+        label { display: block; font-weight: bold; }
+        input, select { width: 100%; padding: 8px; margin-top: 5px; box-sizing: border-box; }
+        input[type="checkbox"] { width: auto; }
+        button { background: #0056b3; color: white; padding: 10px 15px; border: none; cursor: pointer; width: 100%; }
+        button:hover { background: #004494; }
+    </style>
+</head>
+<body>
+
+<div class="form-container">
+    <h2>Student Registration Form</h2>
+    <form id="registrationForm">
+        <div class="field">
+            <label>Full Name</label>
+            <input type="text" id="fullName" placeholder="Enter Full Name">
+        </div>
+        <div class="field">
+            <label>NIC Number</label>
+            <input type="text" id="nic" placeholder="e.g. 123456789V or 200012345678">
+        </div>
+        <div class="field">
+            <label>Contact Number</label>
+            <input type="text" id="contact" placeholder="e.g. 0771234567">
+        </div>
+        <div class="field">
+            <label>Email Address</label>
+            <input type="email" id="email" placeholder="email@example.com">
+        </div>
+        <div class="field">
+            <label>Course Selection</label>
+            <select id="course">
+                <option value="">-- Select a Course --</option>
+                <option value="it">Information Technology</option>
+                <option value="eng">Engineering</option>
+                <option value="mgt">Management</option>
+            </select>
+        </div>
+        <div class="field">
+            <input type="checkbox" id="agreement">
+            <label style="display:inline;">I confirm the details are correct</label>
+        </div>
+        <button type="submit">Submit Registration</button>
+    </form>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
