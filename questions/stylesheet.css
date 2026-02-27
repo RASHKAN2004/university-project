@@ -87,4 +87,12 @@
 
 
     ::placeholder { color: #aaa; font-style: italic; }
+
+    #totalRent{
+    background:#e6f0ff;
+    font-weight:bold;
+    color:#0056b3;
+    text-align:center;
+    font-size:18px;
+}
 </style>

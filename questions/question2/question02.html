@@ -1,167 +1,232 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Premium Vehicle Rental</title>
-    <style>
-        :root {
-            --primary: #4a90e2;
-            --bg-gradient: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Premium Vehicle Rental</title>
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: var(--bg-gradient);
-            background-attachment: fixed;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin: 0;
-            color: #fff;
-        }
+<style>
+body{
+font-family:'Segoe UI',sans-serif;
+background:linear-gradient(135deg,#1a2a6c,#b21f1f,#fdbb2d);
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+margin:0;
+color:white;
+}
 
-        .container {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            padding: 40px;
-            border-radius: 20px;
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-            width: 100%;
-            max-width: 400px;
-        }
+.container{
+background:rgba(255,255,255,0.12);
+backdrop-filter:blur(15px);
+padding:40px;
+border-radius:20px;
+width:420px;
+box-shadow:0 8px 32px rgba(0,0,0,.4);
+animation:fadeIn 1s ease;
+}
 
-        h2 {
-            text-align: center;
-            margin-bottom: 30px;
-            font-weight: 300;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-        }
+h2{text-align:center; letter-spacing:2px; margin-bottom:25px;}
 
-        label {
-            display: block;
-            margin-bottom: 8px;
-            font-size: 14px;
-            font-weight: 500;
-        }
+label{display:block; margin-bottom:5px; font-weight:500;}
 
-        input, select {
-            width: 100%;
-            padding: 12px;
-            margin-bottom: 20px;
-            border: none;
-            border-radius: 8px;
-            background: rgba(255, 255, 255, 0.2);
-            color: #fff;
-            box-sizing: border-box;
-            outline: none;
-            transition: 0.3s;
-        }
+input, select{
+width:100%;
+padding:12px;
+margin-bottom:15px;
+border:none;
+border-radius:8px;
+background:rgba(255,255,255,.2);
+color:white;
+transition: all 0.3s ease;
+font-weight:500;
+}
 
-        input:focus, select:focus {
-            background: rgba(255, 255, 255, 0.3);
-            box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
-        }
+input:focus, select:focus{
+background:rgba(255,255,255,.35);
+box-shadow:0 0 8px #fff;
+outline:none;
+transform:scale(1.02);
+}
 
-        option {
-            background: #2a2a2a;
-            color: #fff;
-        }
+#vehicle{
+background:linear-gradient(135deg,#00c6ff,#0072ff);
+color:#fff;
+font-weight:bold;
+padding:12px;
+border-radius:8px;
+appearance:none;
+-webkit-appearance:none;
+-moz-appearance:none;
+cursor:pointer;
+position:relative;
+transition: all 0.3s ease;
+}
 
-        button {
-            width: 100%;
-            padding: 15px;
-            border: none;
-            border-radius: 8px;
-            background: var(--primary);
-            color: white;
-            font-weight: bold;
-            text-transform: uppercase;
-            cursor: pointer;
-            transition: 0.3s;
-            margin-top: 10px;
-        }
+#vehicle::after{
+content:"▼";
+position:absolute;
+right:15px;
+top:50%;
+transform:translateY(-50%);
+pointer-events:none;
+}
 
-        button:hover {
-            background: #357abd;
-            transform: translateY(-2px);
-        }
+#vehicle option{
+background:#2a2a2a;
+color:#fff;
+}
 
-        #result {
-            text-align: center;
-            margin-top: 20px;
-            padding: 10px;
-            border-radius: 5px;
-            font-size: 14px;
-        }
-    </style>
+button{
+width:100%;
+padding:14px;
+border:none;
+border-radius:8px;
+background:#4a90e2;
+color:white;
+font-weight:bold;
+cursor:pointer;
+transition:0.3s;
+box-shadow:0 4px 15px rgba(0,0,0,0.2);
+}
+
+button:hover{
+transform:translateY(-3px);
+background:#357abd;
+box-shadow:0 6px 20px rgba(0,0,0,0.3);
+}
+
+.totalBox{
+background:linear-gradient(45deg,#00c6ff,#0072ff);
+padding:15px;
+border-radius:10px;
+text-align:center;
+font-size:20px;
+font-weight:bold;
+margin-bottom:15px;
+animation:glow 1.5s infinite alternate;
+}
+
+#result{
+margin-top:15px;
+padding:15px;
+background:rgba(0,0,0,0.3);
+border-radius:10px;
+white-space:pre-line;
+font-weight:bold;
+opacity:1; 
+transition:opacity 0.5s ease-in;
+}
+
+@keyframes glow{
+from{box-shadow:0 0 10px #00c6ff;}
+to{box-shadow:0 0 20px #0072ff;}
+}
+
+@keyframes fadeIn{
+0%{opacity:0; transform:translateY(-20px);}
+100%{opacity:1; transform:translateY(0);}
+}
+
+</style>
 </head>
 <body>
 
-    <div class="container">
-        <h2>Rent a Ride</h2>
-        <form id="booking">
-            <div>
-                <label for="name">Customer Name</label>
-                <input type="text" id="name" placeholder="John Doe">
-            </div>
-            <div>
-                <label for="nic">NIC Number</label>
-                <input type="text" id="nic" placeholder="123456789V">
-            </div>
-            <div>
-                <label for="vehicle">Vehicle Type</label>
-                <select id="vehicle">
-                    <option value="">-- select vehicle --</option>
-                    <option value="car">Car</option>
-                    <option value="van">Van</option>
-                    <option value="bus">Bus</option>
-                </select>
-            </div>
-            <div>
-                <label for="day">Number of Days</label>
-                <input type="number" id="day" placeholder="1">
-            </div>
-            <button type="submit" id="btn">Confirm Booking</button>
-        </form>
-        <p id="result"></p>
-    </div>
+<div class="container">
 
-    <script>
-        const vehicles = [
-            { type: "car", available: 3 },
-            { type: "van", available: 2 },
-            { type: "bus", available: 1 }
-        ];
+<h2>Rent a Ride</h2>
 
-        document.getElementById('booking').addEventListener('submit', (e) => {
-            e.preventDefault();
-            const name = document.getElementById('name').value.trim();
-            const nic = document.getElementById('nic').value.trim();
-            const type = document.getElementById('vehicle').value;
-            const days = parseInt(document.getElementById('day').value);
-            const resultMsg = document.getElementById('result');
+<form id="booking">
 
-            if (!name || !nic || !type || isNaN(days) || days <= 0) {
-                resultMsg.innerText = "Please fill all required fields correctly";
-                resultMsg.style.color = "#ff6b6b";
-                return;
-            }
+<label>Customer Name</label>
+<input type="text" id="name" placeholder="John Doe">
 
-            const selectedVehicle = vehicles.find(v => v.type === type);
-            if (selectedVehicle.available > 0) {
-                selectedVehicle.available -= 1;
-                resultMsg.innerText = `Booking confirmed for ${name} – ${type.toUpperCase()} for ${days} days`;
-                resultMsg.style.color = "#51cf66";
-            } else {
-                resultMsg.innerText = `Sorry, no ${type}s available at the moment.`;
-                resultMsg.style.color = "#fcc419"; 
-            }
-        });
-    </script>
+<label>NIC Number</label>
+<input type="text" id="nic" placeholder="123456789V">
+
+<label>Vehicle Type</label>
+<select id="vehicle">
+<option value="">-- Select Vehicle --</option>
+<option value="car">Car</option>
+<option value="van">Van</option>
+<option value="bus">Bus</option>
+</select>
+
+<label>Number of Days</label>
+<input type="number" id="day" min="1" placeholder="Enter days">
+
+<div class="totalBox">
+Total Rent : Rs <span id="total">0</span>
+</div>
+
+<button type="submit">Confirm Booking</button>
+
+</form>
+
+<div id="result"></div>
+
+</div>
+
+<script>
+
+const vehicles={
+car:{available:3,rate:1500},
+van:{available:2,rate:2500},
+bus:{available:1,rate:4000}
+};
+
+function calculateTotal(){
+const type=document.getElementById("vehicle").value;
+const days=parseInt(document.getElementById("day").value);
+
+if(!type || !days || days<=0){
+document.getElementById("total").innerText=0;
+return;
+}
+
+document.getElementById("total").innerText=
+vehicles[type].rate*days;
+}
+
+document.getElementById("vehicle").addEventListener("change",calculateTotal);
+document.getElementById("day").addEventListener("input",calculateTotal);
+
+document.getElementById("booking").addEventListener("submit",function(e){
+e.preventDefault();
+
+const name=document.getElementById("name").value.trim();
+const nic=document.getElementById("nic").value.trim();
+const type=document.getElementById("vehicle").value;
+const days=parseInt(document.getElementById("day").value);
+const result=document.getElementById("result");
+
+if(name===""){ alert("Enter Customer Name"); return; }
+const nicPattern=/^([0-9]{9}[vVxX]|[0-9]{12})$/;
+if(!nicPattern.test(nic)){ alert("Invalid NIC Number"); return; }
+if(type===""){ alert("Select Vehicle Type"); return; }
+if(!days || days<=0){ alert("Enter valid number of days"); return; }
+if(vehicles[type].available<=0){ alert(type.toUpperCase()+" not available"); return; }
+
+vehicles[type].available--;
+
+const total=vehicles[type].rate*days;
+
+result.innerText=
+`✅ BOOKING CONFIRMED
+
+Customer Name : ${name}
+NIC Number    : ${nic}
+Vehicle Type  : ${type.toUpperCase()}
+Days          : ${days}
+Total Rent    : Rs ${total}`;
+
+this.reset();
+document.getElementById("total").innerText=0;
+
+});
+
+</script>
+
 </body>
 </html>
