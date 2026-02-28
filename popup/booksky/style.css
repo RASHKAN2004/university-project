@@ -1,64 +1,89 @@
-.css-selector {
-font-family: 'Font Name', serif;
+body{
+    font-family: 'Poppins', sans-serif;
+    background: #f4f4f4;
 }
 
 *{
     margin: 0;
     padding: 0;
-
+    box-sizing: border-box;
 }
 
 .navbox{
-    background-color: #fd6569;
-    padding: 10px;
-}
-.container{
-    padding: 10px;
-
-}
-.book-container{
+    background: linear-gradient(45deg,#fd6569,#ff8a8f);
     padding: 15px;
-    width: 25%;
-    background-color: black;
-    border-radius: 10px;
     color: white;
-    margin: 30px;
-
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
 }
+
+.container{
+    padding: 20px;
+}
+
+.book-container{
+    padding: 20px;
+    width: 260px;
+    background: #111;
+    border-radius: 15px;
+    color: white;
+    margin: 15px;
+    display: inline-block;
+    vertical-align: top;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    transition: 0.3s;
+}
+
+.book-container:hover{
+    transform: translateY(-10px) scale(1.03);
+}
+
 .book-container h2{
     color: #fd6569;
+    margin-bottom: 5px;
 }
+
+.book-container h5{
+    color: #ccc;
+    margin-bottom: 10px;
+}
+
 .book-container button{
-    background-color: #fd6569;
+    background: #fd6569;
     color: black;
-    border-radius: 10px;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    padding-left: 10px;
-    padding-right: 10px;
+    border-radius: 20px;
+    padding: 7px 15px;
     border: none;
     margin-top: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+}
 
+.book-container button:hover{
+    background: white;
 }
 
 .add-button{
-    background-color: #fd6569;
-    color: black;
-    border-radius: 100%;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    padding-left: 30px;
-    padding-right: 30px;
-    font-size: 40px;
+    background: linear-gradient(45deg,#fd6569,#ff8a8f);
+    color: white;
+    border-radius: 50%;
+    padding: 18px 28px;
+    font-size: 35px;
     border: none;
     position: fixed;
     bottom: 30px;
     right: 30px;
+    cursor: pointer;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    transition: 0.3s;
 }
+
+.add-button:hover{
+    transform: scale(1.1) rotate(90deg);
+}
+
 .popup-overlay{
-    background-color: black;
-    opacity: 0.8;
-    position: absolute;
+    background-color: rgba(0,0,0,0.7);
+    position: fixed;
     width: 100%;
     height: 100%;
     top: 0;
@@ -67,60 +92,64 @@ font-family: 'Font Name', serif;
     display: none;
 }
 
-.popup-box {
-    background-color: #fd6569;
-    width: 40%;
+.popup-box{
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(15px);
+    width: 35%;
     padding: 40px;
-    border-radius: 10px;
-    position:absolute;
-    top: 20%;
-    left: 30%;
+    border-radius: 20px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
     z-index: 2;
     display: none;
-
-
+    animation: popupAnimation 0.4s ease;
 }
 
-.popup-box-input
-{
+@keyframes popupAnimation{
+    from{
+        transform: translate(-50%,-70%);
+        opacity: 0;
+    }
+    to{
+        transform: translate(-50%,-50%);
+        opacity: 1;
+    }
+}
+
+.popup-box input,
+.popup-box textarea{
     background: transparent;
     border: none;
     width: 100%;
-    margin: 5px;
-    padding: 5px;
-    font-size: 20px;
+    margin: 10px 0;
+    padding: 8px;
+    font-size: 18px;
     border-bottom: solid black 2px;
-
-
 }
 
-.popup-box textarea
-{
-    background: transparent;
-    width: 100%;
-    margin: 5px;
-    padding: 5px;
-    font-size: 20px;
+.popup-box textarea{
     border: solid black 2px;
-
-
+    border-radius: 8px;
 }
-.popup-box textarea::placeholder{
-    color: black;
 
-}
 .popup-box button{
-    background-color: black;
-    padding-left: 20px;
-    padding-right: 20px;
+    background: black;
+    padding: 10px 20px;
     border: none;
-    padding-top: 10px;
-    padding-bottom: 10px;
     color: white;
-    margin: 5px;
-
+    margin-top: 10px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: 0.3s;
 }
-.popup-box input::focus {
-    outline: none;
 
+.popup-box button:hover{
+    background: #fd6569;
+}
+
+.popup-box input:focus,
+.popup-box textarea:focus{
+    outline: none;
 }

@@ -3,22 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet"
-  href="https://fonts.googleapis.com/css?family=Font+Name">
+    <title>BookSky</title>
 
+    <link rel="stylesheet" href="style.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
 </head>
+
 <body>
+
     <div class="navbox">
-        <h1>Booksky</h1>
+        <h1>BookSky</h1>
     </div>
+
     <div class="container">
+
         <div class="book-container">
             <h2>Rich Dad Poor Dad</h2>
-            <h5>Robert</h5>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate eius ex mollitia cumque sunt facere magnam, omnis cum! Odit amet natus quidem cumque nihil, similique corrupti voluptatum id beatae dolor sunt ad est? Similique at, sit aperiam recusandae maiores nobis illum eaque dolor laudantium porro quo odit fuga corrupti corporis?</p>
-            <button>Delete</button>
+            <h5>Robert Kiyosaki</h5>
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            </p>
+            <button onclick="deletebook(event)">Delete</button>
         </div>
 
     </div>
@@ -26,11 +32,16 @@
     <div class="popup-overlay"></div>
 
     <div class="popup-box">
-        <h2>Add book</h2>
+        <h2>Add Book</h2>
+
         <form>
-            <input type="text" placeholder="Book title" id="book-title-input">
-            <input type="text" placeholder="Book Author" id="book-author-input">
-            <textarea placeholder="Short Description" id="book-description-input"></textarea>
+            <input type="text" placeholder="Book Title" id="book-title-input" required>
+
+            <input type="text" placeholder="Book Author" id="book-author-input" required>
+
+            <textarea placeholder="Short Description"
+                id="book-description-input" required></textarea>
+
             <button id="add-book">ADD</button>
             <button id="cancel-popup">CANCEL</button>
         </form>
@@ -39,8 +50,6 @@
     <button class="add-button" id="add-popup-button">+</button>
 
     <script src="script.js"></script>
-    
-
 
 </body>
 </html>
